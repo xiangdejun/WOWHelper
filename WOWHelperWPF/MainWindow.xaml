@@ -5,7 +5,7 @@
         xmlns:cvtr="clr-namespace:WOWHelperWPF.Converters"
         Title="MainWindow" Height="800" Width="1200" Loaded="Window_Loaded" Icon="Images/WoW.ico"
         xmlns:metro="http://metro.mahapps.com/winfx/xaml/controls"
-        BorderThickness="1">
+        BorderThickness="1" WindowStartupLocation="CenterScreen">
 
     <metro:MetroWindow.Resources>
         <cvtr:BoolToVisibilityConverter x:Key="VisibilityConverter" />
@@ -57,67 +57,34 @@
 
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="45"/>
+            <RowDefinition Height="auto"/>
             <RowDefinition Height="55"/>
             <RowDefinition Height="20"/>
             <RowDefinition />
         </Grid.RowDefinitions>
 
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="142*"/>
-            <ColumnDefinition Width="1051*"/>
-        </Grid.ColumnDefinitions>
-
-        <StackPanel x:Name="RepuPanel"  Grid.Row="3" Grid.Column="0" Orientation="Horizontal" Grid.ColumnSpan="2">
-            <!--<TreeView Name="TvRep" Width="300">
-                <TreeView.Resources>
-                    <HierarchicalDataTemplate DataType="{x:Type m:Reputaion}" ItemsSource="{Binding RepList}">
-                        <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="{Binding Name}"></TextBlock>
-                            <ProgressBar Width="100" Value="50"></ProgressBar>
-                            <TextBlock Width="100" Margin="-100 0 0 0" Text="{Binding Score}"></TextBlock>
-                            <TextBlock Text="{Binding Level}"></TextBlock>
-                        </StackPanel>
-                    </HierarchicalDataTemplate>
-                </TreeView.Resources>
-                
-                <TreeViewItem Header="中国" IsExpanded="True">
-                    <TreeViewItem Header="北京[0/3000]首都"></TreeViewItem>
-                    <TreeViewItem Header="乌鲁木齐[1000/20000]省会"></TreeViewItem>
-                    <TreeViewItem Header="湖北[100/2000]华中" IsExpanded="True">
-                        <TreeViewItem Header="武汉[1000/20000]省会"></TreeViewItem>
-                        <TreeViewItem Header="襄阳[100/2000]城市"></TreeViewItem>
-                    </TreeViewItem>
-                    <TreeViewItem Header="深圳[10000/20000]特区"></TreeViewItem>
-                    <TreeViewItem Header="珠海[1000/30000]特区"></TreeViewItem>
-                </TreeViewItem>
-                <TreeViewItem Header="泰国" IsExpanded="True">
-                    <TreeViewItem Header="曼谷[100/3000]首都"></TreeViewItem>
-                    <TreeViewItem Header="普吉岛[110/30100]岛屿" IsExpanded="True">
-                        <TreeViewItem Header="巴东[100/3000]区域"></TreeViewItem>
-                        <TreeViewItem Header="卡塔[100/30000]区域"></TreeViewItem>
-                    </TreeViewItem>
-                    <TreeViewItem Header="清迈[10/30000]城市"></TreeViewItem>
-
-                </TreeViewItem>
-            </TreeView>-->
-        </StackPanel>
-
-
-        <Button Grid.Row="0" Name="BtnRefresh" Content="Refresh" HorizontalAlignment="Left" VerticalAlignment="Top" Width="100" Margin="176,6,0,0" Click="btnRefresh_Click" Grid.Column="1" />
-        <TextBox Name="txtHeroName" HorizontalAlignment="Left" 
-                 Margin="10,10,0,0" TextWrapping="Wrap" Text="别怕有我" VerticalAlignment="Top" Width="120"/>
-        <TextBox Name="txtServerName" HorizontalAlignment="Left"
-                 Margin="16,10,0,0" TextWrapping="Wrap" Text="阿卡玛" VerticalAlignment="Top" Width="120" Grid.Column="1"/>
-
-        <Button Grid.Row="0" Name="BtnSave" Content="Save" HorizontalAlignment="Left" VerticalAlignment="Top" Width="100"  Margin="348,6,0,0" Click="BtnSave_Click" Grid.Column="1" />
-
-
-        <Button Grid.Row="0" Name="BtnLoad" Content="Load" HorizontalAlignment="Left" VerticalAlignment="Top" Width="100" Margin="348,41,0,0" Click="BtnLoad_Click" Grid.Column="1" Grid.RowSpan="2" />
-
-        <Button Grid.Row="0" Name="BtnLoadHtml" Content="Load Html" HorizontalAlignment="Left" VerticalAlignment="Top" Width="100" Margin="500,41,0,0" Click="BtnLoadHtml_Click" Grid.Column="1" Grid.RowSpan="2" />
+        <DockPanel>
+            <StackPanel Orientation="Vertical">
+                <TextBox Name="txtServerName" HorizontalAlignment="Left" Margin="10,10,5,5" TextWrapping="Wrap" Text="阿卡玛" VerticalAlignment="Top" Width="120" />
+                <TextBox Name="txtHeroName" HorizontalAlignment="Left" Margin="10,10,5,5" TextWrapping="Wrap" Text="别怕有我" VerticalAlignment="Top" Width="120"/>
+            </StackPanel>
+            <StackPanel DockPanel.Dock="Right" >
+                <Button Name="BtnLoadHtml" Content="Load Html" Width="100" Margin="10,10,5,5" Click="BtnLoadHtml_Click"/>
+                <Button Name="BtnRefresh" Content="Refresh" Width="100" Margin="10,10,5,5"  Click="btnRefresh_Click"  />
+            </StackPanel>
+            <StackPanel DockPanel.Dock="Right">
+                <Button Name="BtnSave" Content="Save" Width="100" Margin="10,10,5,5"  Click="BtnSave_Click" />
+                <Button Name="BtnLoad" Content="Load" Width="100" Margin="10,10,5,5" Click="BtnLoad_Click"  />
+            </StackPanel>
+            <StackPanel>
+            </StackPanel>
+        </DockPanel>
 
         <ProgressBar HorizontalAlignment="Left" Height="10" Margin="111,28,0,0" VerticalAlignment="Top" Width="100" Background="#FF542B19" Foreground="#FF300929" Value="50" BorderThickness="0" Template="{DynamicResource CustomProgressBar}" Grid.ColumnSpan="2" Grid.Row="1"/>
+
+        <StackPanel x:Name="RepuPanel"  Grid.Row="3" Grid.Column="0" Orientation="Horizontal" Grid.ColumnSpan="2">
+
+        </StackPanel>
 
     </Grid>
 </metro:MetroWindow>
